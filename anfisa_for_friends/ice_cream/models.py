@@ -50,6 +50,14 @@ class IceCream(PublishedModel):
         null=True,
         blank=True,
     )
+    output_order = models.PositiveSmallIntegerField(
+        default=100,
+        verbose_name='Порядок отображения'
+    )
+    price = models.DecimalField(
+        max_digits=5,
+        decimal_places=2
+    )
     category = models.ForeignKey(
         Category,
         on_delete=models.CASCADE,
@@ -62,6 +70,7 @@ class IceCream(PublishedModel):
     class Meta:
         verbose_name = 'Мороженое'
         verbose_name_plural = 'Мороженые'
+        ordering = ('output_order', 'title')
 
     def __str__(self):
         return self.title
