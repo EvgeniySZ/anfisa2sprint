@@ -10,8 +10,8 @@ def index(request):
         'id', 'title', 'price', 'description'
         # Верни только те объекты, у которых в поле is_on_main указано True:
         ).filter(
-            is_on_main=True,
             is_published=True,
+            is_on_main=True,
             category__is_published=True
             )
     
